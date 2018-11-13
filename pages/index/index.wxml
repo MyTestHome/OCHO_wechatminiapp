@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view wx:if="{{showindexview !='0'}}" class='container' style='background-color:{{backgroundColor}};  background-image:url({{backgroundImage}}); background-size: 100% 100%;  color:{{textColor}}'>
+<!--logo -->
+<view class="logo"  wx:if="{{show != 0}}">
+ <image class="logoimg" src="{{logo}}" mode="aspectFit" ></image>
+</view>
+
+<!--Title -->
+<view class="title" wx:if="{{showTitle !='0'}}">
+ <text>{{textUpper}}</text>
+</view>
+
+<!--text -->
+<view class="textAbove"  wx:if="{{showText !='0'}}">
+ <text >{{textAbovePhoto}}</text>
+ <text style="text-decoration: underline" bindtap="goWebUrl">{{linkstr}}</text>
+ <text>{{textabovePhoto_end}}</text>
+</view>
+
+<view class="section"  wx:for="{{mediaList}}" wx:key="item">
+  <video class="video"  objectFit="contain"   src="{{item.mediaurl}}" binderror="videoErrorCallback" bindlongpress="saveVideoToPhotosAlbum" bindfullscreenchange="fullscreenchange">
+   <cover-view class="cover" data-src="{{item.mediaurl}}"  bindlongpress="saveVideoToPhotosAlbum"></cover-view>
+   <cover-view class="cover-left" data-src="{{item.mediaurl}}" bindlongpress="saveVideoToPhotosAlbum"></cover-view>
+   <cover-view class="cover-right" data-src="{{item.mediaurl}}" bindlongpress="saveVideoToPhotosAlbum"></cover-view>
+   <cover-view  class="cover-bootom" data-src="{{item.mediaurl}}" bindlongpress="saveVideoToPhotosAlbum"></cover-view>
+  </video>
+ <!-- <button  bindtap='saveVideoToPhotosAlbum'>save</button> -->
+</view>
+
+<!--text -->
+<view  class="textmsg" wx:if="{{showTextUnder !='0'}}"><text>{{textUnderPhoto}}</text> </view>
+
+<!--QrCode-->
+<view class="qr"  wx:if="{{showqr !='0'}}">
+ <image class="qrimg" src="{{qrCodeImage}}" mode="aspectFit"  bindtap="previewImage"></image>
+</view>
+
+<!--bottom -->
+<view class="textBottom">
+ <text>{{textBottom}}</text> 
+ <text style="text-decoration: underline" bindtap="goWebUrl_bottom">{{linkstr_bottom}}</text>
+ <text>{{textBottom_end}}</text>
+</view>
+</view> 
+
+<!--show pic and link-->
+<view class='linkstyle' wx:if="{{showeventlink !='0'}}">
+ <image src="../images/cartiershow.jpg" mode="aspectFit"  ></image>
+ <text style="text-decoration: underline" bindtap="goWebUrl_eventlink">cartier活动详情</text>
+</view>
